@@ -4,6 +4,7 @@ import morgan from "morgan";
 import connectDB from "./config/db.js";
 import cors from 'cors';
 import authRoutes from './routes/authRoute.js'
+import taskRoutes from './routes/taskRoute.js'
 import userModel from "./models/userModel.js";
 
 
@@ -24,6 +25,7 @@ app.use(morgan('dev'));
 
 //routes
 app.use('/api/v1/auth',authRoutes);
+app.use('/api/v1/task',taskRoutes);
 
 //rest api
 app.get('/', (req,res) =>{

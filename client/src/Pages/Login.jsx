@@ -13,18 +13,14 @@ function Login() {
         e.preventDefault()
        try {
         const res=await axios.post('/api/v1/auth/login',{email,password})
-        // console.log(res.data.user.role);
-        if(res && res.data.success && res.data.user.role !=1){
+       
+        if(res && res.data.success ){
             window.alert(res.data.message)
             console.log(res.data.user);
             nav('/user',{state:res.data.user})
         }
        
-        else {
-            window.alert("Welcome Admin")
-            console.log(res.data.user.role);
-            nav('/admin',{state:{role:res.data.user.role}})
-        }
+       
        } catch (error) {
         window.alert("Login Failed")
        }

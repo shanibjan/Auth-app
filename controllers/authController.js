@@ -6,10 +6,10 @@ import { sendWelcomeEmail } from "../services/emailService.js";
 // REGISTER
 export const registerController = async (req, res) => {
   try {
-    const { name, email, password, phone, address,role} = req.body;
+    const { name, email, password, phone,} = req.body;
 
     // Validation
-    if (!name || !email || !password || !phone || !address || !role ) {
+    if (!name || !email || !password || !phone  ) {
       return res.status(400).send({ error: 'All fields are required' });
     }
 
@@ -31,7 +31,7 @@ export const registerController = async (req, res) => {
     sendWelcomeEmail(email, name);
 
     // Save user
-    const user = await new userModel({ name, email, phone, address ,role, password: hashedPassword}).save();
+    const user = await new userModel({ name, email, phone, password: hashedPassword}).save();
 
     res.status(201).send({
       success: true,
@@ -97,8 +97,7 @@ export const loginController = async (req, res) => {
         name:user.name,
         email:user.email,
         phone:user.phone,
-        address:user.address,
-        role:user.role,
+       
       },
     });
 

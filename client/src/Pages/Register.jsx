@@ -10,16 +10,15 @@ function Register() {
     const [email,setEmail]=useState()
     const [password,setPassword]=useState()
     const [phone,setPhone]=useState()
-    const [address,setAddress]=useState()
-    const [role,setRole]=useState()
-    console.log(role);
+   
+   
     
 
     const handleSubmit=async (e)=>{
         e.preventDefault()
         
         try {
-            const res=await axios.post('/api/v1/auth/register',{name,email,password,phone,address,role})
+            const res=await axios.post('/api/v1/auth/register',{name,email,password,phone})
             console.log(res.data);
             if(res.data.success){
                 window.alert(res.data.message)
@@ -28,7 +27,7 @@ function Register() {
                 window.alert(res.data.message)
             }
         } catch (error) {
-            console.log(error);
+           window.alert(error.response.data.error);
         }
     }
 
@@ -71,13 +70,8 @@ function Register() {
       <label htmlFor="">Phone</label>
       <br />
       <input value={phone} onChange={(e)=>setPhone(e.target.value)} type="text" placeholder="Phone" />
-      <label htmlFor="">Address</label>
-      <br />
-      <input value={address} onChange={(e)=>setAddress(e.target.value)} type="text" placeholder="Address" />
-      <br />
-      <label htmlFor="">Role</label>
-      <p>If Admin please Set Role 1 or User set role 0</p>
-      <input value={role} onChange={(e)=>setRole(e.target.value)} type="number" placeholder="Role" />
+      
+      
       <br />
     </div>
     <button className="create" >Register</button>

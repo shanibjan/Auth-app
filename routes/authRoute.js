@@ -1,6 +1,6 @@
 import express  from 'express';
 import { loginController, registerController, testController, userAuthController} from '../controllers/authController.js'
-import { isAdmin, requireSignIn } from '../middlewares/authMiddleware.js';
+
 
 //routing object
 const router = express.Router()
@@ -18,12 +18,12 @@ router.post('/login',loginController)
 
 
 //test
-router.get('/test',requireSignIn, isAdmin, testController)
+// router.get('/test',requireSignIn, isAdmin, testController)
 
-//protected user auth
-router.get('/user-auth', requireSignIn, userAuthController);
+// //protected user auth
+// router.get('/user-auth', requireSignIn, userAuthController);
 
-//protected admin auth
-router.get('/admin-auth', requireSignIn,isAdmin, userAuthController);
+// //protected admin auth
+// router.get('/admin-auth', requireSignIn,isAdmin, userAuthController);
 
 export default router;

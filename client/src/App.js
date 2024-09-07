@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
-import Admin from "./Pages/Admin";
 import User from "./Pages/User";
+import AllTasks from "./Pages/AllTasks";
 
 function App() {
   return (
@@ -15,14 +15,12 @@ function App() {
         <Routes>
         <Route Component={Login} exact path='/login' />
         </Routes>
-
-        <Routes>
-        <Route Component={Admin} exact path='/admin' />
-        </Routes>
         <Routes>
         <Route Component={User} exact path='/user' />
         </Routes>
-        
+        <Routes>
+        <Route Component={AllTasks} exact path='/all_tasks' />
+        </Routes>
 
 
       </Router>
